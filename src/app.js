@@ -2,18 +2,16 @@ const express = require('express');
 
 const app = express();
 
-
-
-app.use("/home", (req, res)=>{
+app.get("/user", (req, res)=>{
     res.send("Hello from the server");
 });
 
-app.use("/hello", (req, res)=>{
-    res.send("Hello Hello Hello");
+app.post("/user", (req, res)=>{
+    res.send("User Saved Successfully");
 });
 
-app.use("/", (req, res)=>{
-    res.send("Hello from the Dashboard");
+app.delete("/user", (req, res)=>{
+    res.send("User Deleted Successfully");
 });
 
 app.listen(3000, ()=>{
