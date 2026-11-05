@@ -2,17 +2,17 @@ const express = require('express');
 
 const app = express();
 
-app.get("/user", (req, res)=>{
-    res.send("Hello from the server");
+const {adminAuth} = require("./middlewares/auth");
+
+app.use("/admin", adminAuth);
+
+app.get("/admin/getAllData", (req, res, next)=>{   
+    res.send("All Data sent successfully");    
 });
 
-app.post("/user", (req, res)=>{
-    res.send("User Saved Successfully");
-});
-
-app.delete("/user", (req, res)=>{
-    res.send("User Deleted Successfully");
-});
+app.get("/admin/deleteData", (req, res)=>{
+    res.send("Data deleted");
+})
 
 app.listen(3000, ()=>{
     console.log("Server is successfully running on port 3000");
